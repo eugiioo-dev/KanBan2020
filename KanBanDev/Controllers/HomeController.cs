@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using KanBanDev.Models;
 using Microsoft.EntityFrameworkCore;
+using KanBanDev.Util;
 
 namespace KanBanDev.Controllers
 {
@@ -21,20 +22,6 @@ namespace KanBanDev.Controllers
 
         public IActionResult Index()
         {
-            //using (var context = new Models.KanBanContext())
-            //{
-            //    var blogs = context.Usuario
-            //        .Include(permissaoUsuario => permissaoUsuario.PermissaoUsuario)
-            //            .ThenInclude(permissao => permissao.Permissao).ToList();
-            //}
-
-            //retorno.UsuarioDtCadastro = DateTime.Now;
-            //retorno.UsuarioDtUltimoAcesso = retorno.UsuarioDtCadastro;
-
-            //Contexto.Usuario.Attach(retorno);
-            //Contexto.Entry(retorno).State = EntityState.Modified;
-            //Contexto.SaveChanges();
-
             return View();
         }
 

@@ -8,7 +8,7 @@ namespace KanBanDev.Repository
 {
     public class UsuarioRepository
     {
-        private KanBanContext Contexto;
+        private readonly KanBanContext Contexto;
 
         public UsuarioRepository()
         {
