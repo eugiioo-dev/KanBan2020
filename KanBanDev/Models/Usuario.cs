@@ -17,6 +17,7 @@ namespace KanBanDev.Models
         public string UsuarioSenha { get; set; }
         public DateTime UsuarioDtCadastro { get; set; }
         public DateTime UsuarioDtUltimoAcesso { get; set; }
+        public bool UsuarioEmailConfirmado { get; set; }
         public bool UsuarioSituacao { get; set; }
 
         public virtual ICollection<PermissaoUsuario> PermissaoUsuario { get; set; }
