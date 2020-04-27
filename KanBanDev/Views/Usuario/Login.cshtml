@@ -1,4 +1,4 @@
-﻿
+﻿@model KanBanDev.Models.Usuario
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_LayoutExterno.cshtml";
@@ -54,7 +54,6 @@
         border: 1px solid red;
     }
 
-
     #logreg-forms button[type="submit"] {
         margin-top: 10px;
     }
@@ -63,35 +62,39 @@
         display: none;
     }
 
-        #logreg-forms .form-signup {
-            width: 210px;
-        }
+    #logreg-forms .form-signup {
+        width: 210px;
+    }
 
         #logreg-forms .form-signup input {
             margin-bottom: 2px;
         }
 </style>
 
-
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form-login" }))
+{
     <div id="logreg-forms">
-        <form class="form-signin">
+        <div class="form-signin">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">KanBan Login</h1>
-
-            <input type="email" id="UsuarioEmail" class="form-control" placeholder="Informe o E-mail" autofocus="">
-            <input type="password" id="UsuarioSenha" class="form-control" placeholder="Informe a Senha">
+            
+            @Html.EditorFor(model => model.UsuarioEmail, new { htmlAttributes = new { @id = "UsuarioEmail", @class = "form-control", @type = "email", @placeholder = "Informe o E-mail" } })
+            @Html.EditorFor(model => model.UsuarioSenha, new { htmlAttributes = new { @id = "UsuarioSenha", @class = "form-control", @type = "password", @placeholder = "Informe a Senha" } })
 
             <hr />
-            <button class="btn btn-success btn-block" type="button"><i class="fas fa-sign-in-alt"></i>Efetuar Login</button>
+            <button class="btn btn-success btn-block" type="button" onclick="Login();"><i class="fas fa-sign-in-alt"></i>Efetuar Login</button>
             <hr />
             <button class="btn btn-danger btn-block" type="button"><i class="fas fa-user-plus"></i>Esqueceu a Senha?</button>
             <hr />
             <button class="btn btn-primary btn-block" type="button"><i class="fas fa-user-plus"></i>Cadastre-se</button>
-        </form>
+        </div>
 
         @*<form action="/reset/password/" class="form-reset">
-            <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-            <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
-            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
-        </form>*@
+                <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+            </form>*@
     </div>
+}
+
+<script src="~/scripts/Usuario/Login.js"></script>
 

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using KanBanDev.Models;
 using Microsoft.EntityFrameworkCore;
 using KanBanDev.Util;
+using Microsoft.AspNetCore.Http;
 
 namespace KanBanDev.Controllers
 {
@@ -22,7 +23,22 @@ namespace KanBanDev.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            //HttpContext.Session.SetInt32("UsuarioID", UsuarioLogin.UsuarioId);
+            //HttpContext.Session.SetString("UsuarioNome", UsuarioLogin.UsuarioNome);
+            //HttpContext.Session.SetString("UsuarioDtHrUltimoAcesso", UsuarioLogin.UsuarioDtUltimoAcesso.ToString());
+            //HttpContext.Session.SetString("UsuarioDtHrLogin", DateTime.Now.ToString());
+            Int32? CodigoDoUsuario = HttpContext.Session.GetInt32("UsuarioID");
+
+            if (CodigoDoUsuario == null)
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+            else
+            {
+                Usuario UsuarioLogado = new Repository.UsuarioRepository().ObterUsuarioPorId(CodigoDoUsuario);
+
+                return View(UsuarioLogado);
+            }
         }
 
         public IActionResult Privacy()

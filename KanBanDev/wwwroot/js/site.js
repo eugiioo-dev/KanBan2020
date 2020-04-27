@@ -1,6 +1,6 @@
 ﻿function ExibirSucessoComConfirmacao(Titulo, Mensagem) {
     Swal.fire({
-        type: 'success',
+        icon: 'success',
         title: Titulo,
         text: Mensagem,
     })
@@ -8,7 +8,7 @@
 
 function ExibirSucessoSemConfirmacao(Titulo, Mensagem) {
     Swal.fire({
-        type: 'success',
+        icon: 'success',
         title: Titulo,
         text: Mensagem,
         showConfirmButton: false,
@@ -18,7 +18,7 @@ function ExibirSucessoSemConfirmacao(Titulo, Mensagem) {
 
 function ExibirErro(Titulo, Erros) {
     Swal.fire({
-        type: 'error',
+        icon: 'error',
         title: Titulo,
         html: PreencherListaDeErros(Erros),
     })
@@ -26,19 +26,15 @@ function ExibirErro(Titulo, Erros) {
 
 function PreencherListaDeErros(Erros) {
     var ErrosEmHtmlParaRenderizar = "";
-    if (Array.isArray(Erros) == false) {
-        ErrosEmHtmlParaRenderizar = Erros;
-    } else {
-        for (var i = 0; i < Erros.length; i++) {
-            ErrosEmHtmlParaRenderizar += Erros[i] + "<br/>";
-        }
+    for (var i = 0; i < Erros.length; i++) {
+        ErrosEmHtmlParaRenderizar += Erros[i].errorMessage + "<br/>";
     }
     return ErrosEmHtmlParaRenderizar;
 }
 
 function ExibirAlertaComConfirmacao(Titulo, Mensagem) {
     Swal.fire({
-        type: 'warning',
+        icon: 'warning',
         title: Titulo,
         text: Mensagem,
     })
@@ -46,7 +42,7 @@ function ExibirAlertaComConfirmacao(Titulo, Mensagem) {
 
 function ExibirAlertaSemConfirmacao(Titulo, Mensagem) {
     Swal.fire({
-        type: 'warning',
+        icon: 'warning',
         title: Titulo,
         text: Mensagem,
         showConfirmButton: false,
@@ -56,7 +52,7 @@ function ExibirAlertaSemConfirmacao(Titulo, Mensagem) {
 
 function ExibirConfirmacao(Titulo, Mensagem) {
     Swal.fire({
-        type: 'question',
+        icon: 'question',
         title: Titulo,
         text: Mensagem,
         confirmButtonColor: '#3085d6',
@@ -68,7 +64,7 @@ function ExibirConfirmacao(Titulo, Mensagem) {
 
 function ExibirInformacao(Titulo, Mensagem) {
     Swal.fire({
-        type: 'info',
+        icon: 'info',
         title: Titulo,
         text: Mensagem,
     })

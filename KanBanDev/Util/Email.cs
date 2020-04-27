@@ -15,8 +15,8 @@ namespace KanBanDev.Util
         {
             RestClient Client = new RestClient
             {
-                BaseUrl = new Uri("https://api.mailgun.net/v3"),
-                Authenticator = new HttpBasicAuthenticator("api", "dc7f343ff9de4e6655da753254190d6b-c9270c97-47cfb0ff")
+                BaseUrl = new Uri(Geral.ConverterBase64ParaTexto("aHR0cHM6Ly9hcGkubWFpbGd1bi5uZXQvdjM=")),
+                Authenticator = new HttpBasicAuthenticator("api", Geral.ConverterBase64ParaTexto("a2V5LWU3OTU3M2M0ODliZGI0ZWQ2NGRlMzNiMzJjZWFjZGY3"))
             };
 
             RestRequest Request = new RestRequest
@@ -25,8 +25,8 @@ namespace KanBanDev.Util
                 Method = Method.POST,
             };
 
-            Request.AddParameter("domain", "giodev.cf", ParameterType.UrlSegment);
-            Request.AddParameter("from", "Quadros KanBan <naoresponda@quadroskanban.giodev.cf>");
+            Request.AddParameter("domain", Geral.ConverterBase64ParaTexto("Z2lvZGV2LmNm"), ParameterType.UrlSegment);
+            Request.AddParameter("from", Geral.ConverterBase64ParaTexto("UXVhZHJvcyBLYW5CYW4gPG5hb3Jlc3BvbmRhQHF1YWRyb3NrYW5iYW4uZ2lvZGV2LmNmPg=="));
             Request.AddParameter("to", Destinatario);
             Request.AddParameter("subject", Assunto);
             Request.AddParameter("html", Email);

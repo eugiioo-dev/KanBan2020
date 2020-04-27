@@ -1,4 +1,5 @@
 ﻿using KanBanDev.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace KanBanDev.Repository
             }
         }
 
-        public Usuario ObterUsuarioPorId(Int32 IdUsuario)
+        public Usuario ObterUsuarioPorId(Int32? IdUsuario)
         {
             return Contexto.Usuario.Where(x => x.UsuarioId == IdUsuario).FirstOrDefault();
         }
@@ -31,6 +32,16 @@ namespace KanBanDev.Repository
         public IQueryable<Usuario> ObterTodos()
         {
             return Contexto.Usuario;
+        }
+
+        public Usuario RegistrarAcesso(Usuario UsuarioAcesso)
+        {
+            UsuarioAcesso.UsuarioDtUltimoAcesso = DateTime.Now;
+            Contexto.Usuario.Attach(UsuarioAcesso);
+            Contexto.Entry(UsuarioAcesso).State = EntityState.Modified;
+            Contexto.SaveChanges();
+
+            return UsuarioAcesso;
         }
     }
 }
