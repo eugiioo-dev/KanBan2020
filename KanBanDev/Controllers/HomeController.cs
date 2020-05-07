@@ -23,10 +23,6 @@ namespace KanBanDev.Controllers
 
         public IActionResult Index()
         {
-            //HttpContext.Session.SetInt32("UsuarioID", UsuarioLogin.UsuarioId);
-            //HttpContext.Session.SetString("UsuarioNome", UsuarioLogin.UsuarioNome);
-            //HttpContext.Session.SetString("UsuarioDtHrUltimoAcesso", UsuarioLogin.UsuarioDtUltimoAcesso.ToString());
-            //HttpContext.Session.SetString("UsuarioDtHrLogin", DateTime.Now.ToString());
             Int32? CodigoDoUsuario = HttpContext.Session.GetInt32("UsuarioID");
 
             if (CodigoDoUsuario == null)
@@ -35,8 +31,7 @@ namespace KanBanDev.Controllers
             }
             else
             {
-                Usuario UsuarioLogado = new Repository.UsuarioRepository().ObterUsuarioPorId(CodigoDoUsuario);
-
+                Usuario UsuarioLogado = new Repository.UsuarioRepository().ObterUsuarioPorIdComRelacionamentos(CodigoDoUsuario);
                 return View(UsuarioLogado);
             }
         }

@@ -13,7 +13,8 @@ namespace KanBanDev.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            Repository.UsuarioRepository RepoUsuario = new Repository.UsuarioRepository();
+            return View(RepoUsuario.ObterTodos());
         }
 
         [HttpGet]

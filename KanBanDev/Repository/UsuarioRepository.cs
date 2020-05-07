@@ -24,6 +24,11 @@ namespace KanBanDev.Repository
             return Contexto.Usuario.Where(x => x.UsuarioId == IdUsuario).FirstOrDefault();
         }
 
+        public Usuario ObterUsuarioPorIdComRelacionamentos(Int32? IdUsuario)
+        {
+            return Contexto.Usuario.Include(r => r.Quadro).ThenInclude(r => r.Tarefa).Include(r => r.PermissaoUsuario).ThenInclude(r => r.Permissao).Where(x => x.UsuarioId == IdUsuario).FirstOrDefault();
+        }
+
         public IQueryable<Usuario> ObterUsuarioPorEmail(String EmailUsuario)
         {
             return Contexto.Usuario.Where(x => x.UsuarioEmail == EmailUsuario);

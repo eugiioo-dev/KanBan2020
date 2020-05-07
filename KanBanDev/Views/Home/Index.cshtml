@@ -7,3 +7,20 @@
     <h1 class="display-4">Bem vindo</h1>
     <p>Esse é o seu painel, @Model.UsuarioNome - Seu ultimo acesso foi em @Model.UsuarioDtUltimoAcesso </p>
 </div>
+<div class="card-group">
+    <div class="card text-white bg-success mb-3">
+        <div class="card-header">Quadro</div>
+        <div class="card-body">
+            <h5 class="card-title">@Model.Quadro.Count() Quadro(s)</h5>
+            <p class="card-text">Quantidade Atual de Quadros Ativos!</p>
+        </div>
+    </div>
+
+    <div class="card text-white bg-success mb-3">
+        <div class="card-header">Tarefa</div>
+        <div class="card-body">
+            <h5 class="card-title">@Model.PermissaoUsuario.Count() Tarefa(s)</h5>
+            <p class="card-text">Quantidade de Tarefas Em Todos os Quadros!</p>
+        </div>
+    </div>
+</div>
